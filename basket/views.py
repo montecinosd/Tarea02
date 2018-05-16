@@ -14,6 +14,13 @@ def index(request):
     template_name = 'player/list_player.html'
     return render(request, template_name, data)
 
+def TemplateAgregar(request):
+    template = 'agregar.html'
+    return render(request, template)
+
+def TemplateAgregar(request):
+    template = 'agregar.html'
+    return render(request, template)
 
 def detail(request, player_id):
 
