@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from basket.models import Player
 from django.http import HttpResponse
+from basket.forms import PlayerForm
+from django.shortcuts import redirect
 
 
 def index(request):
@@ -16,11 +18,29 @@ def index(request):
 
 def TemplateAgregar(request):
     template = 'agregar.html'
-    return render(request, template)
+    data = {}
+    if request.method == "POST":
+        data['form'] = PlayerForm(request.POST, request.FILES)
 
-def TemplateAgregar(request):
-    template = 'agregar.html'
-    return render(request, template)
+        if data['form'].is_valid():
+            # aca el formulario valido
+            data['form'].save()
+
+            return redirect('player_list')
+
+    else:
+        data['form'] = PlayerForm()
+
+    template_name = 'agregar.html'
+    return render(request, template_name, data)
+
+def Templatelistar(request):
+    template = 'listar.html'
+    data = {}
+
+    # SELECT * FROM player
+    data['object_list'] = Player.objects.all()
+    return render(request, template, data)
 
 def detail(request, player_id):
 

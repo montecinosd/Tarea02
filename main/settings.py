@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'basket',
     'autofixture',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [
