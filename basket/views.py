@@ -34,6 +34,18 @@ def TemplateAgregar(request):
     template_name = 'agregar.html'
     return render(request, template_name, data)
 
+
+def editar_jugador(request,id_jugador):
+    jugador = Player.objects.get(id=id_jugador)
+    if request.method == 'GET':
+        form = PlayerForm(instance=jugador)
+    else:
+        form = PlayerForm(request.POST,instance=jugador)
+        if form.is_valid():
+            form.save()
+        return redirect('../listar')
+    return render(request,'agregar.html',{'form':form})
+
 def Templatelistar(request):
     template = 'listar.html'
     data = {}
