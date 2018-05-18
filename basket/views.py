@@ -46,6 +46,13 @@ def editar_jugador(request,id_jugador):
         return redirect('../listar')
     return render(request,'agregar.html',{'form':form})
 
+def eliminar_jugador(request,id_jugador):
+    jugador = Player.objects.get(id=id_jugador)
+
+    jugador.delete()
+    return redirect('../listar')
+    return render(request,'eliminar.html', {'jugador':jugador})
+
 def Templatelistar(request):
     template = 'listar.html'
     data = {}

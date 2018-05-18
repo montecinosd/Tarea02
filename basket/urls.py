@@ -9,5 +9,7 @@ urlpatterns = [
     path('agregar',views.TemplateAgregar,name='agregar'),
     path('listar',views.Templatelistar,name='Templatelistar'),
     path('editar/<int:id_jugador>',views.editar_jugador,name='editar_jugador'),
+    path('eliminar/<int:id_jugador>',views.eliminar_jugador,name='eliminar_jugador'),
+
 
 ]
